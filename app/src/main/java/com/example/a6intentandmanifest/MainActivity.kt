@@ -17,6 +17,22 @@ class MainActivity : AppCompatActivity() {
         bntClick.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
                 val intent : Intent = Intent(this@MainActivity, SecondActivity::class.java)//chuyển từ mh này sang mh khác
+                //truyền dữ liệu trực tiếp bằng intent
+                //name trong putextra giống như 1 cái id để phân biệt
+//                intent.putExtra("bienstring","hello")
+//                intent.putExtra("bienint",123)
+//                intent.putExtra("bienbool",true)
+
+                //gửi bằng bundle(đóng gói lại để gửi)
+                //1. nạp dữ liệu
+                val bundle = Bundle()
+                bundle.putString("bienstring","hello")
+                bundle.putInt("bienint",123)
+                bundle.putBoolean("bienbool",true)
+                bundle.putDouble("biendouble",7.8)
+
+                //đặt bundle vào trong intent
+                intent.putExtras(bundle)
                 startActivity(intent)
             }
 
